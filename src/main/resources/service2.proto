@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package service2;
+
+service DosingScheduleService {
+    rpc GetMedicationSchedule(MedicationRequest) returns (MedicationResponse);
+    rpc AlertMedication(stream MedicationAlert) returns (MedicationAlertSummary);
+}
+
+message MedicationRequest {
+    int32 patient_id = 1;
+}
+
+message MedicationResponse {
+    string dosage = 1;
+    string medicament_name = 2;
+}
+
+message MedicationAlert {
+    string dosage_details = 1;
+}
+
+message MedicationAlertSummary {
+    string summary = 1;
+}

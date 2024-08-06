@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package service3;
+
+service RoomService {
+    rpc CleaningRoom(CleaningRoomRequest) returns (CleaningRoomResponse);
+    rpc RoomTemperature(stream RoomTemperatureRequest) returns (stream RoomTemperatureResponse);
+}
+
+message CleaningRoomRequest {
+    int32 room_id = 1;
+}
+
+message CleaningRoomResponse {
+    string status = 1;
+}
+
+message RoomTemperatureRequest {
+    int32 room_id = 1;
+}
+
+message RoomTemperatureResponse {
+    int32 temperature = 1;
+}

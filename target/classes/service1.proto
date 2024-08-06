@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package service1;
+
+service PatientService {
+    rpc GetPatientDetails(PatientRequest) returns (PatientResponse);
+    rpc GetPatientVitals(PatientRequest) returns (stream PatientVitalsResponse);
+}
+
+message PatientRequest {
+    int32 patient_id = 1;
+}
+
+message PatientResponse {
+    string name = 1;
+    int32 code = 2;
+}
+
+message PatientVitalsResponse {
+    int32 blood_pressure = 1;
+    int32 heartbeat = 2;
+}
+
+message MedicationResponse {
+    string dosage = 1;
+    string medicament_name = 2;
+}
+
+message MedicationAlert {
+    string dosage_details = 1;
+}
+
+message MedicationAlertSummary {
+    string summary = 1;
+}
