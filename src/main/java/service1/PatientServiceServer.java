@@ -8,6 +8,7 @@ import io.grpc.stub.StreamObserver;
 import service1.PatientServiceGrpc.PatientServiceImplBase;
 import service1.Service1.PatientRequest;
 import service1.Service1.PatientResponse;
+import service1.Service1.PatientVitalsResponse;
 
 public class PatientServiceServer extends PatientServiceImplBase {
 	
@@ -28,22 +29,46 @@ public class PatientServiceServer extends PatientServiceImplBase {
 
     @Override
     public void getPatientDetails(PatientRequest request, StreamObserver<PatientResponse> responseObserver) {
-        // Extract patient ID from the request
+        // takes ID of the patient from the request
         int patientId = request.getPatientId();
 
         // the patient name goes here
         String name = "Moises Gonzalez"; // Fetch patient name based on patientId
         int code = 222; // Fetch patient code based on patientId
 
-        // Build the response
+        // Building the response
         PatientResponse response = PatientResponse.newBuilder()
                 .setName(name)
                 .setCode(code)
                 .build();
 
-        // Send the response to the client
+        // Send back the response to the client
         responseObserver.onNext(response);
         responseObserver.onCompleted(); // Indicate the end of the RPC call
+    }
+    
+    
+    // patient vitals from here
+    @Override
+    public void getPatientVitals(PatientRequest request, StreamObserver<PatientVitalsResponse> responseObserver) {
+    	
+    	 // takes the patient ID from the request
+        // Stream GRPC: sending multiple vitals signals
+        int patientId = request.getPatientId();
+        
+     // this maes the Simulation of the streaming for  vitals signals
+        for (int i = 0; i < 5; i++) {
+        	
+        	// Creating  a new reply for blood pressure and heartbeats
+            PatientVitalsResponse vitalsResponse = PatientVitalsResponse.newBuilder()
+                    .setBloodPressure(120)
+                    .setHeartbeat(80)
+                    .build();
+            
+            responseObserver.onNext(vitalsResponse);
+        }
+        
+        responseObserver.onCompleted();
     }
 }
 
