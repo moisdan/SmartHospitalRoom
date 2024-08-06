@@ -6,6 +6,7 @@ service3\Service3$CleaningRoomRequestOrBuilder.class
 generated\ds\service2\ResponseMessage.class
 service2\DosingScheduleServiceGrpc$1.class
 service3\Service3$CleaningRoomResponseOrBuilder.class
+service2\DosingScheduleServer$1.class
 generated\ds\service3\Service3Grpc$Service3BaseDescriptorSupplier.class
 generated\ds\service3\Service3Grpc$Service3MethodDescriptorSupplier.class
 generated\ds\service3\Service3Impl$1.class
@@ -62,12 +63,14 @@ generated\ds\service2\Service2Grpc$Service2FileDescriptorSupplier.class
 service2\Service2$1.class
 generated\ds\service1\Service1Impl$1.class
 generated\ds\service2\RequestMessage$Builder.class
+service2\DosingScheduleServer.class
 service2\DosingScheduleServiceGrpc$DosingScheduleServiceBlockingStub.class
 service2\Service2$MedicationAlert$Builder.class
 service2\Service2$MedicationResponseOrBuilder.class
 service1\PatientServiceGrpc$PatientServiceFutureStub.class
 service2\DosingScheduleServiceGrpc.class
 service2\Service2$MedicationAlertOrBuilder.class
+service2\DosingScheduleClient$1.class
 service3\RoomServiceGrpc$RoomServiceBaseDescriptorSupplier.class
 service1\Service1$PatientResponseOrBuilder.class
 service1\PatientServiceGrpc$PatientServiceBlockingStub.class
@@ -148,6 +151,7 @@ service3\RoomServiceGrpc$RoomServiceMethodDescriptorSupplier.class
 service2\Service2$MedicationAlertSummary$Builder.class
 service2\Service2$MedicationRequest$Builder.class
 service2\DosingScheduleServiceGrpc$MethodHandlers.class
+service2\DosingScheduleClient.class
 service2\DosingScheduleServiceGrpc$DosingScheduleServiceStub.class
 service1\Service1$PatientRequest$1.class
 generated\ds\service3\Service3Grpc$Service3BlockingStub.class

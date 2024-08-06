@@ -33,8 +33,8 @@ public class PatientServiceServer extends PatientServiceImplBase {
         int patientId = request.getPatientId();
 
         // the patient name goes here
-        String name = "Moises Gonzalez"; // Fetch patient name based on patientId
-        int code = 222; // Fetch patient code based on patientId
+        String name = "Moises Gonzalez"; // gives patient name based on patientId
+        int code = 222; // gives patient code based on patientId
 
         // Building the response
         PatientResponse response = PatientResponse.newBuilder()
@@ -56,7 +56,7 @@ public class PatientServiceServer extends PatientServiceImplBase {
         // Stream GRPC: sending multiple vitals signals
         int patientId = request.getPatientId();
         
-     // this maes the Simulation of the streaming for  vitals signals
+     // this makes the Simulation of the streaming for  vitals signals
         for (int i = 0; i < 5; i++) {
         	
         	// Creating  a new reply for blood pressure and heartbeats
