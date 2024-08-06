@@ -21,15 +21,3 @@ message PatientVitalsResponse {
     int32 heartbeat = 2;
 }
 
-message MedicationResponse {
-    string dosage = 1;
-    string medicament_name = 2;
-}
-
-message MedicationAlert {
-    string dosage_details = 1;
-}
-
-message MedicationAlertSummary {
-    string summary = 1;
-}
