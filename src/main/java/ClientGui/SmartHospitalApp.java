@@ -12,6 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class SmartHospitalApp extends JFrame {
 
@@ -73,6 +75,10 @@ public class SmartHospitalApp extends JFrame {
 		Vresponse.setColumns(10);
 		
 		JButton PatientIDBtn = new JButton("OK");
+		PatientIDBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		PatientIDBtn.setBounds(200, 40, 52, 23);
 		contentPane.add(PatientIDBtn);
 		

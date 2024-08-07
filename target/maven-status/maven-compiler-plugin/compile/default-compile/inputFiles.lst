@@ -15,6 +15,7 @@ C:\Users\moi\eclipse-workspace\SmartHospitalRoom\src\main\java\generated\ds\serv
 C:\Users\moi\eclipse-workspace\SmartHospitalRoom\src\main\java\generated\ds\service2\DosingSchedService.java
 C:\Users\moi\eclipse-workspace\SmartHospitalRoom\src\main\java\generated\ds\service2\RequestMessage.java
 C:\Users\moi\eclipse-workspace\SmartHospitalRoom\src\main\java\generated\ds\service3\ResponseMessage.java
+C:\Users\moi\eclipse-workspace\SmartHospitalRoom\src\main\java\service3\RoomServiceServer.java
 C:\Users\moi\eclipse-workspace\SmartHospitalRoom\src\main\java\generated\ds\service1\Service1OuterClass.java
 C:\Users\moi\eclipse-workspace\SmartHospitalRoom\src\main\java\service3\Service3.java
 C:\Users\moi\eclipse-workspace\SmartHospitalRoom\src\main\java\service2\DosingScheduleClient.java
@@ -28,6 +29,7 @@ C:\Users\moi\eclipse-workspace\SmartHospitalRoom\src\main\java\service3\RoomServ
 C:\Users\moi\eclipse-workspace\SmartHospitalRoom\src\main\java\generated\ds\service1\PatientIDRequest.java
 C:\Users\moi\eclipse-workspace\SmartHospitalRoom\src\main\java\generated\ds\service2\RequestMessageOrBuilder.java
 C:\Users\moi\eclipse-workspace\SmartHospitalRoom\src\main\java\generated\ds\service1\RequestMessage.java
+C:\Users\moi\eclipse-workspace\SmartHospitalRoom\src\main\java\service3\RoomServiceClient.java
 C:\Users\moi\eclipse-workspace\SmartHospitalRoom\src\main\java\service1\PatientServiceServer.java
 C:\Users\moi\eclipse-workspace\SmartHospitalRoom\src\main\java\generated\ds\service3\RequestMessageOrBuilder.java
 C:\Users\moi\eclipse-workspace\SmartHospitalRoom\src\main\java\service1\PatientServiceGrpc.java

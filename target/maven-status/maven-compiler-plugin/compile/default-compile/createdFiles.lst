@@ -75,10 +75,12 @@ service3\RoomServiceGrpc$RoomServiceBaseDescriptorSupplier.class
 service1\Service1$PatientResponseOrBuilder.class
 service1\PatientServiceGrpc$PatientServiceBlockingStub.class
 generated\ds\service1\Service1Grpc$Service1Stub.class
+service3\RoomServiceServer$1.class
 service3\Service3$1.class
 service1\PatientServiceGrpc$PatientServiceBaseDescriptorSupplier.class
 service3\Service3$RoomTemperatureRequest.class
 generated\ds\service3\ResponseMessage$Builder.class
+service3\RoomServiceClient$1.class
 service3\Service3$RoomTemperatureResponse.class
 generated\ds\service2\ResponseMessage$Builder.class
 service1\Service1$PatientRequest$Builder.class
@@ -103,6 +105,7 @@ service3\RoomServiceGrpc$1.class
 generated\ds\service2\DosingSchedService$Service2Impl.class
 generated\ds\service1\Service1OuterClass$PatientResponseOrBuilder.class
 generated\ds\service3\Service3Grpc$Service3ImplBase.class
+service3\RoomServiceServer.class
 service3\RoomServiceGrpc$RoomServiceStub.class
 generated\ds\service2\Service2Impl.class
 service3\RoomServiceGrpc$MethodHandlers.class
@@ -168,3 +171,4 @@ service1\Service1$PatientVitalsResponse$1.class
 generated\ds\service2\Service2Grpc$Service2BlockingStub.class
 service2\DosingScheduleServiceGrpc$DosingScheduleServiceFutureStub.class
 generated\ds\service3\Service3Grpc$Service3FileDescriptorSupplier.class
+service3\RoomServiceClient.class
