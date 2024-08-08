@@ -62,16 +62,17 @@ public class DosingScheduleClient {
 	            for (int i = 1; i <= 5; i++) {
 	                MedicationAlert alert = MedicationAlert.newBuilder().setDosageDetails("Dose " + i).build();
 	                requestObserver.onNext(alert);
+	                Thread.sleep(3000);
 	            }
 	            // Complete the stream
 	            requestObserver.onCompleted();
 
 	            // Sleep to give the server time to process the alerts
-	            Thread.sleep(5000);
+	            Thread.sleep(3000);
 
 	        } catch (StatusRuntimeException | InterruptedException e) {
-	            // Handle exceptions and print error details
-	            e.printStackTrace();
+	             //Handle exceptions and print error details
+	           e.printStackTrace();
 	        } finally {
 	            // Shutdown the channel to free resources
 	            channel.shutdownNow();

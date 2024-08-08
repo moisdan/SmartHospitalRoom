@@ -64,7 +64,7 @@ public class DosingScheduleServer extends DosingScheduleServiceImplBase {
                 String dosageDetails = alert.getDosageDetails();
                 alerts.add(dosageDetails);
 
-                // For simplicity, assume even indexes are confirmed doses, odd indexes are skipped doses
+                // if even(par) confirmed and odd(inpar) skipped(confirm number divisible by 2)
                 if (alerts.size() % 2 == 0) {
                     confirmed++;
                 } else {

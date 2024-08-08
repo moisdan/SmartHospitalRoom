@@ -50,7 +50,7 @@ public class PatientServiceClient {
 
                 @Override
                 public void onError(Throwable t) {
-                    System.err.println("Error: " + t.getMessage());
+                    System.err.println("Errorxxx: " + t.getMessage());
                 }
 
                 @Override
@@ -60,14 +60,14 @@ public class PatientServiceClient {
             });
 
             // Sleep to give the server time to send all the responses
-            Thread.sleep(5000);
+            Thread.sleep(45000);
 
         } catch (StatusRuntimeException | InterruptedException e) {
             // Handle exceptions and print error details
             System.err.println("RPC failed: " + ((StatusRuntimeException) e).getStatus());
         } finally {
             // Shutdown the channel to free resources
-            channel.shutdownNow();
+           channel.shutdownNow();
         }
     }
 }

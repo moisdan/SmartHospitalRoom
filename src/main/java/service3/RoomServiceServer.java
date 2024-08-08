@@ -52,7 +52,7 @@ public class RoomServiceServer extends RoomServiceImplBase {
         return new StreamObserver<RoomTemperatureRequest>() {
             @Override
             public void onNext(RoomTemperatureRequest request) {
-                int temperature = 22; // Example static temperature value
+                int temperature = 21 + (int)(Math.random() * 6 - 3); // random Temperature between 19-23.
                 RoomTemperatureResponse response = RoomTemperatureResponse.newBuilder()
                         .setTemperature(temperature)
                         .build();
