@@ -9,6 +9,11 @@ import service1.PatientServiceGrpc.PatientServiceImplBase;
 import service1.Service1.PatientRequest;
 import service1.Service1.PatientResponse;
 import service1.Service1.PatientVitalsResponse;
+							//here takes this import if JMDnS not work at the end.
+import javax.jmdns.JmDNS;
+import javax.jmdns.ServiceInfo;
+import java.io.IOException;
+import java.net.InetAddress;
 
 public class PatientServiceServer extends PatientServiceImplBase {
 	
@@ -24,8 +29,28 @@ public class PatientServiceServer extends PatientServiceImplBase {
                 .start();
 
         System.out.println("PatientServiceServer started, listening on " + port);
-        grpcServer.awaitTermination(); // Keep the server running
+        
+        // Register the service with JmDNS
+        registerServiceWithJmDNS(port);//here takes this out if not working at the end
+
+        // Keep the server running
+         grpcServer.awaitTermination(); // Keep the server running
     }
+	
+		private static void registerServiceWithJmDNS(int port) {// jmdns server side take this out if not working at the end.
+        try {
+            // Create a JmDNS instance and register the service
+            JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
+            ServiceInfo serviceInfo = ServiceInfo.create("_grpc._tcp.local.", "PatientService", port, "gRPC PatientService");
+            jmdns.registerService(serviceInfo);
+
+            System.out.println("Service registered with JmDNS: " + serviceInfo);
+        } catch (IOException e) {
+            System.err.println("Failed to register service with JmDNS: " + e.getMessage());
+        }
+    }
+
+	
 
     @Override
     public void getPatientDetails(PatientRequest request, StreamObserver<PatientResponse> responseObserver) {

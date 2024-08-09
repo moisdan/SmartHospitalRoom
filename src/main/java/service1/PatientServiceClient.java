@@ -9,19 +9,30 @@ import service1.PatientServiceGrpc.PatientServiceStub;
 import service1.Service1.PatientRequest;
 import service1.Service1.PatientResponse;
 import service1.Service1.PatientVitalsResponse;
-import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
 import service1.PatientServiceGrpc.PatientServiceBlockingStub;
 import service1.PatientServiceGrpc.PatientServiceStub;
 import service1.Service1.PatientRequest;
 import service1.Service1.PatientResponse;
+							// for JMdns imports
+import javax.jmdns.JmDNS;
+import javax.jmdns.ServiceInfo;
+import java.io.IOException;
+import java.net.InetAddress;
 
 public class PatientServiceClient {
 
 	public static void main(String[] args) {
         // Define the target server address
         String target = "localhost:50051";
+        
+        // Discover the service with JmDNS if available
+        ServiceInfo serviceInfo = discoverServiceWithJmDNS();
+        if (serviceInfo != null) {
+            target = serviceInfo.getHostAddresses()[0] + ":" + serviceInfo.getPort();
+        }
+        
         // Create a channel to connect to the server
         ManagedChannel channel = ManagedChannelBuilder.forTarget(target).usePlaintext().build();
 
@@ -70,5 +81,26 @@ public class PatientServiceClient {
            channel.shutdownNow();
         }
     }
+	private static ServiceInfo discoverServiceWithJmDNS() { //added for the JMdns
+        try {
+            // Create a JmDNS instance and start service discovery
+            JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
+            System.out.println("Starting service discovery...");
+
+            ServiceInfo serviceInfo = jmdns.getServiceInfo("_grpc._tcp.local.", "PatientService");
+            if (serviceInfo != null) {
+                System.out.println("PatientService discovered with JmDNS:");
+                System.out.println("Service Name: " + serviceInfo.getName());
+                System.out.println("Service Type: " + serviceInfo.getType());
+                System.out.println("Service Host: " + serviceInfo.getHostAddresses()[0]);
+                System.out.println("Service Port: " + serviceInfo.getPort());
+            }
+            return serviceInfo;
+        } catch (IOException e) {
+            System.err.println("Failed to discover service with JmDNS: " + e.getMessage());
+            return null;
+        }
+    }
 }
+
 	
