@@ -18,6 +18,7 @@ import service2.Service2.MedicationAlertSummary;
 import service3.RoomServiceGrpc;
 import service3.Service3;
 import service3.Service3.CleaningRoomResponse;
+import service3.Service3.RoomTemperatureRequest;
 import service3.Service3.RoomTemperatureResponse;
 
 import javax.swing.JSplitPane;
@@ -28,6 +29,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.util.concurrent.TimeUnit;
 import java.awt.event.ActionEvent;
 
 
@@ -99,12 +101,12 @@ public class SmartHospitalApp extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		PResponse = new JTextField();
-		PResponse.setBounds(262, 41, 162, 20);
+		PResponse.setBounds(262, 41, 316, 20);
 		contentPane.add(PResponse);
 		PResponse.setColumns(10);
 		
 		Vresponse = new JTextField();
-		Vresponse.setBounds(262, 82, 162, 20);
+		Vresponse.setBounds(262, 82, 316, 20);
 		contentPane.add(Vresponse);
 		Vresponse.setColumns(10);
 		
@@ -161,7 +163,7 @@ public class SmartHospitalApp extends JFrame {
 		contentPane.add(AlertBtn);
 		
 		MedScheResponse = new JTextField();
-		MedScheResponse.setBounds(262, 132, 162, 20);
+		MedScheResponse.setBounds(262, 132, 316, 20);
 		contentPane.add(MedScheResponse);
 		MedScheResponse.setColumns(10);
 		
@@ -201,12 +203,12 @@ public class SmartHospitalApp extends JFrame {
 		contentPane.add(TempBtn);
 		
 		CleanResponse = new JTextField();
-		CleanResponse.setBounds(262, 212, 162, 20);
+		CleanResponse.setBounds(262, 212, 316, 20);
 		contentPane.add(CleanResponse);
 		CleanResponse.setColumns(10);
 		
 		TempResponse = new JTextField();
-		TempResponse.setBounds(262, 240, 162, 20);
+		TempResponse.setBounds(262, 240, 316, 20);
 		contentPane.add(TempResponse);
 		TempResponse.setColumns(10);
 		
@@ -398,11 +400,11 @@ public class SmartHospitalApp extends JFrame {
     	    }
 
     	    // Create a StreamObserver to handle responses from the server
-    	    StreamObserver<Service3.RoomTemperatureRequest> responseObserver = new StreamObserver<Service3.RoomTemperatureRequest>() {
+    	    StreamObserver<Service3.RoomTemperatureResponse> responseObserver = new StreamObserver<Service3.RoomTemperatureResponse>() {
     	        @Override
-    	        public void onNext(Service3.RoomTemperatureRequest value) {
+    	        public void onNext(Service3.RoomTemperatureResponse response) {
     	            // Update the text field with the received data from the server
-    	            TempResponse.setText("Temperature response: " + TempResponse );
+    	            TempResponse.setText("Temperature response: " + response );
     	        }
 
     	        @Override
@@ -417,5 +419,28 @@ public class SmartHospitalApp extends JFrame {
     	            TempResponse.setText("Room service completed.");
     	        }
     	    };
-	}
-    } 
+    	    
+    	    // Create a StreamObserver to send requests to the server
+    	    StreamObserver<Service3.RoomTemperatureRequest> requestObserver = roomServiceStub.roomTemperature(responseObserver);
+
+    	    // Send a few example RoomTemperatureRequest messages
+    	    //for (int i = 0; i < 5; i++) {
+            //    
+            //    requestObserver.onNext(temperatureRequest);
+            //    System.out.println("Sent RoomTemperatureRequest #" + (i + 1));
+            //    try {
+			//		TimeUnit.SECONDS.sleep(1);
+			//	} catch (InterruptedException e) {
+			//		// TODO Auto-generated catch block
+			//		e.printStackTrace();
+			//	}
+            //}
+    	    RoomTemperatureRequest temperatureRequest = RoomTemperatureRequest.newBuilder().setRoomId(1).build();
+    	    requestObserver.onNext(temperatureRequest);
+    	    // Complete the sending process
+    	    //requestObserver.onCompleted();
+    	}
+    	    
+    }
+	
+    

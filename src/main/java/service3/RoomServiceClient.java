@@ -68,14 +68,21 @@ public class RoomServiceClient {
 
         for (int i = 0; i < 5; i++) {
             RoomTemperatureRequest temperatureRequest = RoomTemperatureRequest.newBuilder().setRoomId(1).build();
-            requestObserver.onNext(temperatureRequest);
-            System.out.println("Sent RoomTemperatureRequest #" + (i + 1));
-            TimeUnit.SECONDS.sleep(1);
+            try {
+	            requestObserver.onNext(temperatureRequest);
+	            System.out.println("Sent RoomTemperatureRequest #" + (i + 1));
+	            TimeUnit.SECONDS.sleep(1);
+            }catch(Exception e) {
+            	//ignore solemnly
+            }
         }
-
-        requestObserver.onCompleted();
-        TimeUnit.SECONDS.sleep(1); // Allow some time for responses
-
+        
+        try {
+        	//requestObserver.onCompleted();
+        	TimeUnit.SECONDS.sleep(2); // Allow some time for responses
+        } catch(Exception e) {
+        	//System.out.println(e.getMessage());
+        }
         channel.shutdownNow();
         System.out.println("Client shut down.");
     }

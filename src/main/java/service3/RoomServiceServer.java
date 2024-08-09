@@ -10,6 +10,7 @@ import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
 import java.io.IOException;
 import java.net.InetAddress;
+import java.util.concurrent.TimeUnit;
 
 public class RoomServiceServer extends RoomServiceImplBase {
 	
@@ -59,16 +60,27 @@ public class RoomServiceServer extends RoomServiceImplBase {
         return new StreamObserver<RoomTemperatureRequest>() {
             @Override
             public void onNext(RoomTemperatureRequest request) {
-                int temperature = 21 + (int)(Math.random() * 6 - 3); // random Temperature between 19-23.
-                RoomTemperatureResponse response = RoomTemperatureResponse.newBuilder()
-                        .setTemperature(temperature)
-                        .build();
-                responseObserver.onNext(response);
+                
+            	for (int i = 0; i < 5; i++) {
+            		int temperature = 21 + (int)(Math.random() * 6 - 3); // random Temperature between 19-23.
+                    RoomTemperatureResponse response = RoomTemperatureResponse.newBuilder()
+                            .setTemperature(temperature)
+                            .build();
+                    responseObserver.onNext(response);
+                    System.out.println("Sent RoomTemperatureRequest #" + (i + 1));
+                    try {
+    					TimeUnit.SECONDS.sleep(1);
+    				} catch (InterruptedException e) {
+    					// TODO Auto-generated catch block
+    					e.printStackTrace();
+    				}
+                }
+                responseObserver.onCompleted();
             }
 
             @Override
             public void onError(Throwable t) {
-                System.err.println("Error: " + t.getMessage());
+                //System.err.println("Error: " + t.getMessage());
             }
 
             @Override
