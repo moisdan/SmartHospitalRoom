@@ -31,6 +31,7 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.util.concurrent.TimeUnit;
 import java.awt.event.ActionEvent;
+import javax.swing.JSeparator;
 
 
 public class SmartHospitalApp extends JFrame {
@@ -85,7 +86,7 @@ public class SmartHospitalApp extends JFrame {
 		setBackground(new Color(240, 240, 240));
 		setTitle("SmartHospitalRoom");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 617, 330);
+		setBounds(100, 100, 617, 421);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -129,19 +130,19 @@ public class SmartHospitalApp extends JFrame {
 		contentPane.add(PvitalsBtn);
 		
 		JLabel lblNewLabel_2 = new JLabel("Service 1: Patient Details");
-		lblNewLabel_2.setBounds(110, 19, 170, 14);
+		lblNewLabel_2.setBounds(159, 11, 170, 14);
 		contentPane.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Service 2: Dosing Schedule");
-		lblNewLabel_3.setBounds(110, 110, 170, 14);
+		lblNewLabel_3.setBounds(159, 130, 170, 14);
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("Method 1:medication Schedule");
-		lblNewLabel_4.setBounds(9, 135, 181, 14);
+		lblNewLabel_4.setBounds(10, 191, 181, 14);
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("Method 2: Alert medication");
-		lblNewLabel_5.setBounds(10, 160, 180, 14);
+		lblNewLabel_5.setBounds(11, 216, 180, 14);
 		contentPane.add(lblNewLabel_5);
 		
 		JButton MedSchduleBtn = new JButton("OK");
@@ -150,7 +151,7 @@ public class SmartHospitalApp extends JFrame {
 				getMedicationSchedule();// trigger response
 			}
 		});
-		MedSchduleBtn.setBounds(200, 131, 52, 23);
+		MedSchduleBtn.setBounds(201, 187, 52, 23);
 		contentPane.add(MedSchduleBtn);
 		
 		JButton AlertBtn = new JButton("OK");
@@ -159,29 +160,29 @@ public class SmartHospitalApp extends JFrame {
 				sendMedicationAlerts();
 			}
 		});
-		AlertBtn.setBounds(200, 160, 52, 23);
+		AlertBtn.setBounds(201, 216, 52, 23);
 		contentPane.add(AlertBtn);
 		
 		MedScheResponse = new JTextField();
-		MedScheResponse.setBounds(262, 132, 316, 20);
+		MedScheResponse.setBounds(263, 188, 316, 20);
 		contentPane.add(MedScheResponse);
 		MedScheResponse.setColumns(10);
 		
 		AlertResponse = new JTextField();
-		AlertResponse.setBounds(262, 161, 316, 35);
+		AlertResponse.setBounds(263, 217, 316, 22);
 		contentPane.add(AlertResponse);
 		AlertResponse.setColumns(10);
 		
 		JLabel lblNewLabel_6 = new JLabel("Service3: Room Service");
-		lblNewLabel_6.setBounds(116, 194, 136, 14);
+		lblNewLabel_6.setBounds(166, 271, 136, 14);
 		contentPane.add(lblNewLabel_6);
 		
 		JLabel lblNewLabel_7 = new JLabel("Method 1: cleaning Room");
-		lblNewLabel_7.setBounds(10, 215, 180, 14);
+		lblNewLabel_7.setBounds(10, 324, 180, 14);
 		contentPane.add(lblNewLabel_7);
 		
 		JLabel lblNewLabel_8 = new JLabel("Method 2: Room Temperature");
-		lblNewLabel_8.setBounds(10, 240, 180, 14);
+		lblNewLabel_8.setBounds(10, 352, 180, 14);
 		contentPane.add(lblNewLabel_8);
 		
 		JButton CleanBtn = new JButton("OK");
@@ -190,7 +191,7 @@ public class SmartHospitalApp extends JFrame {
 				getCleaningRoom();
 			}
 		});
-		CleanBtn.setBounds(200, 211, 52, 23);
+		CleanBtn.setBounds(200, 320, 52, 23);
 		contentPane.add(CleanBtn);
 		
 		JButton TempBtn = new JButton("OK");
@@ -199,28 +200,26 @@ public class SmartHospitalApp extends JFrame {
 				getServiceRoom();
 			}
 		});
-		TempBtn.setBounds(200, 236, 52, 23);
+		TempBtn.setBounds(200, 348, 52, 23);
 		contentPane.add(TempBtn);
 		
 		CleanResponse = new JTextField();
-		CleanResponse.setBounds(262, 212, 316, 20);
+		CleanResponse.setBounds(262, 323, 316, 20);
 		contentPane.add(CleanResponse);
 		CleanResponse.setColumns(10);
 		
 		TempResponse = new JTextField();
-		TempResponse.setBounds(262, 240, 316, 20);
+		TempResponse.setBounds(262, 349, 316, 20);
 		contentPane.add(TempResponse);
 		TempResponse.setColumns(10);
 		
-		id1 = new JTextField();
-		id1.setBounds(110, 41, 86, 20);
-		contentPane.add(id1);
+		JSeparator separator = new JSeparator();
+		separator.setBounds(10, 272, 568, 2);
+		contentPane.add(separator);
 		
-		id1 = new JTextField();
-		id1.setBounds(110, 41, 86, 20);
-		contentPane.add(id1);
-		id1.setColumns(10);
-		id1.setColumns(10);
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(10, 130, 568, 2);
+		contentPane.add(separator_1);
 		
 		// Initialize gRPC clients
 		 initializeGrpcClients();
@@ -440,7 +439,6 @@ public class SmartHospitalApp extends JFrame {
     	    // Complete the sending process
     	    //requestObserver.onCompleted();
     	}
-    	    
     }
 	
     
