@@ -29,6 +29,13 @@ public class RoomServiceServer extends RoomServiceImplBase {
         JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
         ServiceInfo serviceInfo = ServiceInfo.create("_grpc._tcp.local.", "RoomService", port, "gRPC RoomService");
         jmdns.registerService(serviceInfo);
+        
+     // Print confirmation that the service has been registered
+        System.out.println("RoomService has been registered with JmDNS:");
+        System.out.println("Service Name: " + serviceInfo.getName());
+        System.out.println("Service Type: " + serviceInfo.getType());
+        System.out.println("Service Port: " + serviceInfo.getPort());
+        System.out.println("Service Description: " + serviceInfo.getDomain());
 
         // Keep the server running
         grpcServer.awaitTermination();
