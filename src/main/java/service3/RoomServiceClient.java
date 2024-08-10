@@ -78,7 +78,7 @@ public class RoomServiceClient {
         }
         
         try {
-        	//requestObserver.onCompleted();
+        
         	TimeUnit.SECONDS.sleep(2); // Allow some time for responses
         } catch(Exception e) {
         	//System.out.println(e.getMessage());
